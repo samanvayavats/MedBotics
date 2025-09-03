@@ -13,12 +13,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
-      <body
-        className={``}
-      >
-        {children}
+    <html lang="en" className="h-full">
+      <body >
+        <div
+          className="absolute inset-0 -z-10 h-full w-full items-center [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#FFA94D_100%)]">
+          {children}
+        </div>
+
       </body>
     </html>
   );
