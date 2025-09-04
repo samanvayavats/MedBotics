@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
-
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "MedBotics",
@@ -13,15 +13,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en" className="h-full">
-      <body >
-        <div
-          className="absolute inset-0 -z-10 h-full w-full items-center [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#FFA94D_100%)]">
-          {children}
-        </div>
+      <body className="flex flex-col min-h-screen relative">
+        {/* Background layer */}
+        <div className="fixed inset-0 -z-10 w-full h-full bg-[radial-gradient(125%_125%_at_50%_10%,#000_40%,#E97912_100%)]" />
 
+        {/* Content */}
+        <Navbar />
+        <main className="flex-1 relative z-10">{children}</main>
+        <Footer />
       </body>
     </html>
   );

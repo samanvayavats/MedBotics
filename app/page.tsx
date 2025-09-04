@@ -1,8 +1,11 @@
-import Navbar from "@/components/navbar";
+import Homepageintro from "@/components/homepageintro";
+
 export default function Home() {
   return (
     <div >
-      <Navbar />
+      
+      <Homepageintro />
+     
     </div>
   );
 }
