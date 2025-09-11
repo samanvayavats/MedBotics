@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "this the backend for the medbotics the ai powered doctor assistant",
+  "keywords": [
+    "ai",
+    "medical"
+  ],
+  "license": "ISC",
+  "author": "samanvaya vats",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
