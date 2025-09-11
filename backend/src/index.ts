@@ -1,8 +1,3 @@
-import express from "express"
-const app = express()
+import dotenv from 'dotenv'
 
-app.get('/' ,(req:any, res:any)=>{
-    return res.send(' are we able to use the ts with the nodemon !')
-})
-
-app.listen(8000)
+dotenv.config({ path: '/custom/path/to/.env' })
