@@ -105,8 +105,8 @@ const login = async (req: Request, res: Response) => {
 
     return res
         .status(200)
-        .cookie(refreshToken, option)
-        .cookie(accessToken, option)
+        .cookie("refreshToken" ,refreshToken, option)
+        .cookie("accessToken" ,accessToken, option)
         .json({ message: "sign-in succefuly", userWithTokens })
 }
 

@@ -8,7 +8,9 @@ const Page = ({ params }: Page) => {
   const patients = [
     { id: "1", name: "John Doe", age: 30 },
     { id: "2", name: "Jane Smith", age: 25 },
-    { id: "3", name: "Alex Johnson", age: 40 },
+    { id: "4", name: "Alex Johnson", age: 40 },
+    { id: "5", name: "Alex Johnson", age: 40 },
+    { id: "6", name: "Alex Johnson", age: 40 },
   ];
 
   return (

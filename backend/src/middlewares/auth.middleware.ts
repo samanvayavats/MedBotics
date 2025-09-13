@@ -16,6 +16,7 @@ const verifyJwt = async (req: Request, res: Response, next: NextFunction) => {
     const token =
       req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
 
+
     if (!token) {
       return res.status(400).json({ message: "token is required" });
     }

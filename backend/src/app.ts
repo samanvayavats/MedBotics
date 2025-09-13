@@ -14,7 +14,9 @@ app.use(express.json())
 app.use(cookieParser())
 
 import doctorRoute from "./routes/doctor.route.js";
+import patientRoute from "./routes/patient.route.js";
 
 app.use("/api/v1/doctor" , doctorRoute)
+app.use("/api/v1/patient" , patientRoute)
 
 export {app}
