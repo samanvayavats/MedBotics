@@ -1,11 +1,8 @@
-// POST /api/patients → Add new patient
 
-// GET /api/patients/:id → Get patient details + visits
-
-// GET /api/patients?doctorId=xyz →
 import { Request, Response } from "express"
 import Patient from "../models/patient.model.js"
 
+// this is for adding the new patient and this will aslo be provided to vapi 
 const addpatient = async (req: Request, res: Response) => {
 
     try {
@@ -47,6 +44,7 @@ const addpatient = async (req: Request, res: Response) => {
     }
 }
 
+// this is used get the particular patient by id
 const getpatient = async (req: Request, res: Response) => {
 
     try {
@@ -79,6 +77,7 @@ const getpatient = async (req: Request, res: Response) => {
 
 }
 
+// this is used to get all the patient of the doctor
 const getAllPatients = async (req:Request , res:Response) => {
     try {
         const {doctorId} = req.query
@@ -109,6 +108,7 @@ const getAllPatients = async (req:Request , res:Response) => {
     }
 
 }
+
 export {
     addpatient,
     getpatient,

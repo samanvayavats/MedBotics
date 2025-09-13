@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { strSchema } from '../schema/index.js'
 import Jwt, { JwtPayload } from "jsonwebtoken";
 
+// this is use to gererate the refreshToken and accessToken
 const generateTokens = async (id: any): Promise<any> => {
 
     try {
@@ -26,6 +27,7 @@ const generateTokens = async (id: any): Promise<any> => {
 
 }
 
+// this is used for the doctor registeration
 const register = async (req: Request, res: Response) => {
     try {
 
@@ -76,6 +78,7 @@ const register = async (req: Request, res: Response) => {
 
 }
 
+// this is for the login and from here the cookie will generate
 const login = async (req: Request, res: Response) => {
     const { email, password } = req.body
 
@@ -110,8 +113,8 @@ const login = async (req: Request, res: Response) => {
         .json({ message: "sign-in succefuly", userWithTokens })
 }
 
+// this is also an endpoint to generate the accessToken and refreshToken
 const generateAccessAndRefreshToken = (async (req: Request, res: Response) => {
-
 
     try {
 
