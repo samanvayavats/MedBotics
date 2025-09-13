@@ -37,7 +37,7 @@ const verifyJwt = async (req: Request, res: Response, next: NextFunction) => {
     next();
   } catch (error: any) {
     console.error("Jwt verification error:", error.message);
-    return res.status(400).json({ message: "jwt verification failed" });
+    return res.status(401).json({ message: "jwt verification failed" });
   }
 };
 

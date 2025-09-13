@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from "react";
-
+import Link from "next/link";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,7 +12,9 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex text-white space-x-8 items-center">
+          <Link href='/'>
           <li className="cursor-pointer hover:text-primary-400">Home</li>
+          </Link>
           <li className="cursor-pointer hover:text-primary-400">About</li>
           <li>
             <button className="border-2 border-primary-500 py-1 px-3 rounded-2xl bg-primary-500 hover:bg-primary-600 transition">
@@ -52,7 +54,9 @@ const Navbar = () => {
         }`}
       >
         <ul className="text-white flex flex-col space-y-3 py-5 items-center mx-3 rounded-2xl shadow-lg">
+          <Link href='/'>
           <li className="cursor-pointer hover:text-primary-400">Home</li>
+          </Link>
           <li className="cursor-pointer hover:text-primary-400">About</li>
           <li>
             <button className="border-2 border-primary-500 py-1 px-3 rounded-2xl bg-primary-500 hover:bg-primary-600 transition">

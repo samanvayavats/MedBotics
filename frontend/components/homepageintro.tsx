@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Link from 'next/link'
 const HomepageIntro = () => {
     return (
         <section className="w-full flex flex-col md:flex-row-reverse  items-center justify-center px-6 md:px-12 lg:px-20 py-10">
@@ -31,9 +31,11 @@ const HomepageIntro = () => {
                 <p className="mt-4 text-base md:text-lg leading-relaxed text-justify md:text-left">
                     ✨ With MedBotics, the future of healthcare starts at your fingertips.
                 </p>
+                <Link href='/signup'>
                 <button className=" my-4 border-2 border-primary-500 py-1 px-6 rounded-2xl  hover:bg-primary-600 transition">
                     Get Started 
                 </button>
+                </Link>
             </main>
         </section>
     )

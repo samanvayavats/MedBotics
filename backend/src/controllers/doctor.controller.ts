@@ -1,6 +1,7 @@
 import Doctor from "../models/doctor.model.js";
 import { Request, Response } from "express";
 import { strSchema } from '../schema/index.js'
+import Jwt, { JwtPayload } from "jsonwebtoken";
 
 const generateTokens = async (id: any): Promise<any> => {
 
@@ -94,23 +95,78 @@ const login = async (req: Request, res: Response) => {
 
     const { refreshToken, accessToken } = await generateTokens(isValidDcotor?._id)
 
-    
+
     const userWithTokens = await Doctor.findById(isValidDcotor?._id).select('-password -refreshToken')
-    
+
     const option = {
         httpOnly: true,
         secure: true,
     }
 
     return res
-    .status(200)
-    .cookie(refreshToken , option)
-    .cookie(accessToken , option)
-    .json({message : "sign-in succefuly" ,userWithTokens})
+        .status(200)
+        .cookie(refreshToken, option)
+        .cookie(accessToken, option)
+        .json({ message: "sign-in succefuly", userWithTokens })
 }
 
+const generateAccessAndRefreshToken = (async (req: Request, res: Response) => {
 
+
+    try {
+
+        const incommingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
+
+        if (!incommingRefreshToken) {
+            return res.status(400).json({ message: "Invalid token" })
+        }
+
+        const decodedToken = Jwt.verify(
+            incommingRefreshToken,
+            process.env.ACCESS_TOKEN_SECRET as string
+        ) as JwtPayload & { _id: string };
+
+
+        const user = await Doctor.findById(decodedToken?._id)
+
+
+        if (!user) {
+            return res.status(400).json({ message: "Invalid User" })
+        }
+
+
+        if (incommingRefreshToken !== user?.refreshToken) {
+            return res.status(400).json({ message: "Invalid token or user does not exits" })
+        }
+
+        const { accessToken, newRefreshToken } = await generateTokens(user._id)
+
+        const options = {
+            httpOnly: true,
+            secure: true
+        }
+
+        return res
+            .status(200)
+            .cookie("accessToken", accessToken, options)
+            .cookie("refreshToken", newRefreshToken, options)
+            .json(
+                {
+                    message: "token generate successfully",
+                    accessToken: accessToken,
+                    refreshToken: newRefreshToken
+                }
+            )
+    } catch (error) {
+        return res.status(500).json({
+            message: " something went wrong inn generating the tokens"
+        })
+    }
+
+
+})
 export {
     register,
-    login
+    login,
+    generateAccessAndRefreshToken
 }
